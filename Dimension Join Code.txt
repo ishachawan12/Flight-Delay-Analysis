@@ -1,0 +1,29 @@
+-- Date:
+Select do.OrderID, dt.[Date SKey] 
+from Dim_Date dt, [Dim Orders] do 
+where do.OrderDate= dt.Date;
+
+-- Employees:
+Select do.OrderID, de.[Employee skey]
+from [Dim Employees] de, [Dim Orders] do
+where do.EmployeeID= de.EmployeeID;
+
+-- Categories:
+select dc.[Category Skey],dp.ProductID 
+from [Dim Products] dp, [Dim Categories] dc
+where dp.CategoryID=dc.CategoryID;
+
+-- Suppliers:
+select ds.[Supplier Skey],dp.ProductID 
+from [Dim Products] dp, [Dim Suppliers] ds 
+where dp.SupplierID=ds.SupplierID;
+
+-- Shippers:
+Select do.OrderID, ds.[Shipper skey]
+from [Dim Shippers] ds, [Dim Orders] do
+where do.ShipVia= ds.ShipperID;
+
+-- Customers:
+SELECT do.OrderID, dc.[Customer Skey]
+FROM  [Dim Customers] dc INNER JOIN
+  [Dim Orders] do ON dc.CustomerID = do.CustomerID
